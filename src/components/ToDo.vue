@@ -54,6 +54,7 @@
 
 <script>
 export default {
+
   // Debug function that runs on build
   created(){
     // var exArray = [{id: '123', title: '123', complete: false}];
@@ -103,8 +104,7 @@ export default {
         this.completedToDoList.push(item);
         let index = this.todoList.findIndex(element => element.id === item.id);
         this.todoList.splice(index, 1);
-        localStorage.setItem("todolist", JSON.stringify(this.todoList));
-        localStorage.setItem("completedtodolist", JSON.stringify(this.completedToDoList));
+        this.setStorage(this.todoList, this.completedToDoList);
     },
 
     // Delete an item
@@ -112,8 +112,7 @@ export default {
       let index = this.todoList.findIndex(element => element.id === item.id);
       this.todoList.splice(index, 1);
       this.completedToDoList.splice(index, 1);
-      localStorage.setItem("todolist", JSON.stringify(this.todoList));
-      localStorage.setItem("completedtodolist", JSON.stringify(this.completedToDoList));
+      this.setStorage(this.todoList, this.completedToDoList);
     },
 
     // Set an item incomplete
@@ -122,10 +121,15 @@ export default {
         let index = this.completedToDoList.findIndex(element => element.id === item.id);
         this.todoList.push(item);
         this.completedToDoList.splice(index, 1);
+        this.setStorage(this.todoList, this.completedToDoList);
+    },
 
-        localStorage.setItem("todolist", JSON.stringify(this.todoList));
-        localStorage.setItem("completedtodolist", JSON.stringify(this.completedToDoList));
-    }
+    // Set Storage
+    setStorage(todoList, completedToDoList){
+      localStorage.setItem("todolist", JSON.stringify(todoList));
+      localStorage.setItem("completedtodolist", JSON.stringify(completedToDoList));
+    },
+
   }
 }
 </script>
@@ -138,9 +142,10 @@ export default {
   width: calc(100% - 20px);
   min-height: calc(100% - 20px);
   background: white;
+  margin: auto;
 }
 .lists-container {
-  max-height: 75vh;
+  max-height: 65vh;
   overflow-y: scroll;
   padding: 10px;
 }
@@ -235,7 +240,7 @@ input:focus {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   color: black;
 }
 
