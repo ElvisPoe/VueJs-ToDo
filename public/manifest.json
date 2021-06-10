@@ -1,0 +1,17 @@
+{
+  "name": "ToDo App",
+  "short_name": "ToDo",
+  "theme_color": "#ffcbe4",
+  "background_color": "#fa99ca",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/index.html",
+  "description": "Elvis Poe ToDo App with vue",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "https://img.icons8.com/ios/452/microsoft-to-do-app.png",
+      "sizes": "452x452"
+    }
+  ]
+}

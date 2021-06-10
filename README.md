@@ -1,4 +1,4 @@
-# vue-challenge-1
+# VueChallenge#1 - ToDo App
 
 ## Project setup
 ```
